@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday</title>
+    <style>
+        /* 设置蛋糕样式 */
+        .cake {
+            width: 200px;
+            height: 200px;
+            background-color: #f0d891;
+            border-radius: 50%;
+            position: relative;
+            margin: 100px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 800px;
+        }
+
+        /* 设置蜡烛样式 */
+        .candle {
+            font-size: 20px;
+            position: absolute;
+            top: -30px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body onload="startAnimation()"> <!-- 在这里调用启动动画的函数 -->
+    <div class="cake">
+        <pre>
+             
+     🎂🎂🎂🎂🎂🎂🎂🎂
+     🎂happy birthday 🎂    
+     🎂🎂🎂🎂🎂🎂🎂🎂 
+		   
+		     
+        </pre>
+        <!-- 添加蜡烛 -->
+        <div class="candle">🕯️</div>
+    </div>
+
+    <div style="text-align: center;">
+        <h1>祝李红熠小姐姐生日快乐🎉🎈</h1>
+        <p>生日蛋糕已经点亮，🕯️蜡烛微微闪烁</p>
+        <p>愿您的生日如同蛋糕一样甜美</p>
+        <p>每一天都充满阳光灿烂的笑容！</p>
+        <p>🎂🎂🎂🎂🎂🎂🎂🎂 🎂🎂🎂🎂🎂🎂🎂🎂 🎂🎂🎂🎂🎂🎂🎂🎂 🎂      🎂🎂🎂🎂🎂🎂 🎂🎂🎂🎂🎂🎂🎂</p>
+    </div>
+
+    <script>
+        // JavaScript代码实现蜡烛飘落效果
+        function createCandle() {
+            // 创建一个蜡烛元素
+            const candle = document.createElement("div");
+            candle.innerHTML = "🕯️"; // 这里使用🕯️字符表示蜡烛
+            candle.className = "candle";
+
+            // 设置蜡烛的初始位置和动画效果
+            const randomX = Math.random() * window.innerWidth;
+            candle.style.left = `${randomX}px`;
+            candle.style.animation = "fall 3s linear infinite"; // 使用CSS动画
+
+            // 将蜡烛添加到页面中
+            document.body.appendChild(candle);
+
+            // 在动画结束后移除蜡烛元素，避免堆积过多蜡烛
+            candle.addEventListener("animationiteration", () => {
+                document.body.removeChild(candle);
+            });
+        }
+
+        // 启动动画的函数
+        function startAnimation() {
+            setInterval(createCandle, 1000);
+        }
+    </script>
+</body>
+</html>
